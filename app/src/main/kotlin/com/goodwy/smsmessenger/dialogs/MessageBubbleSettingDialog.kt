@@ -15,7 +15,6 @@ import kotlin.math.abs
 
 class MessageBubbleSettingDialog(
     private val activity: SimpleActivity,
-    private val isPro: Boolean,
     private val callback: (style: Int) -> Unit,
 ) {
     private val binding = DialogMessageBubbleSettingBinding.inflate(activity.layoutInflater)

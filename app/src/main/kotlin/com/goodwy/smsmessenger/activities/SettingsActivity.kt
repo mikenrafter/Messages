@@ -394,7 +394,7 @@ class SettingsActivity : SimpleActivity() {
         settingsMessageBubbleIcon.setTextColor(primaryColor.getContrastColor())
         settingsMessageBubbleIcon.setPaddingBubble(this@SettingsActivity, config.bubbleStyle)
         settingsMessageBubbleHolder.setOnClickListener {
-            MessageBubbleSettingDialog(this@SettingsActivity, isPro()) {
+            MessageBubbleSettingDialog(this@SettingsActivity) {
                 settingsMessageBubbleIcon.background = resources.getColoredDrawableWithColor(getMessageBubbleResource(it), primaryColor)
                 settingsMessageBubbleIcon.setPaddingBubble(this@SettingsActivity, it)
             }
