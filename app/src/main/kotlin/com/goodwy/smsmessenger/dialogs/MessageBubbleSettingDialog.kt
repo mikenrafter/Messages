@@ -56,25 +56,16 @@ class MessageBubbleSettingDialog(
             setupToggleBubbleStyle(BUBBLE_STYLE_ORIGINAL)
         }
         binding.styleRounded.setOnClickListener {
-            if (isPro) {
-                currentBubbleStyle = BUBBLE_STYLE_ROUNDED
-                setupToggleBubbleStyle(BUBBLE_STYLE_ROUNDED)
-            } else isNotPro()
+            currentBubbleStyle = BUBBLE_STYLE_ROUNDED
+            setupToggleBubbleStyle(BUBBLE_STYLE_ROUNDED)
         }
         binding.styleIosNew.setOnClickListener {
             currentBubbleStyle = BUBBLE_STYLE_IOS_NEW
             setupToggleBubbleStyle(BUBBLE_STYLE_IOS_NEW)
         }
         binding.styleIos.setOnClickListener {
-            if (isPro) {
-                currentBubbleStyle = BUBBLE_STYLE_IOS
-                setupToggleBubbleStyle(BUBBLE_STYLE_IOS)
-            } else isNotPro()
-        }
-
-        if (!isPro) {
-            binding.styleRounded.alpha = 0.6f
-            binding.styleIos.alpha = 0.6f
+            currentBubbleStyle = BUBBLE_STYLE_IOS
+            setupToggleBubbleStyle(BUBBLE_STYLE_IOS)
         }
 
         activity.getAlertDialogBuilder()
