@@ -1,24 +1,16 @@
 package com.goodwy.smsmessenger.dialogs
 
 import android.content.res.ColorStateList
-import android.graphics.Color
-import android.widget.FrameLayout
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.res.ResourcesCompat
 import com.goodwy.commons.extensions.*
-import com.goodwy.commons.helpers.isSPlus
 import com.goodwy.smsmessenger.R
 import com.goodwy.smsmessenger.activities.SimpleActivity
 import com.goodwy.smsmessenger.databinding.DialogMessageBubbleSettingBinding
 import com.goodwy.smsmessenger.extensions.config
-import com.goodwy.smsmessenger.extensions.launchPurchase
 import com.goodwy.smsmessenger.helpers.BUBBLE_STYLE_IOS
 import com.goodwy.smsmessenger.helpers.BUBBLE_STYLE_IOS_NEW
 import com.goodwy.smsmessenger.helpers.BUBBLE_STYLE_ORIGINAL
 import com.goodwy.smsmessenger.helpers.BUBBLE_STYLE_ROUNDED
-import com.google.android.material.snackbar.Snackbar
-import com.mikhaellopez.rxanimation.RxAnimation
-import com.mikhaellopez.rxanimation.shake
 import kotlin.math.abs
 
 class MessageBubbleSettingDialog(
@@ -78,32 +70,6 @@ class MessageBubbleSettingDialog(
                     dialog = alertDialog
                 }
             }
-    }
-
-    private fun isNotPro() {
-        RxAnimation.from(binding.styleIos)
-            .shake(shakeTranslation = 2f)
-            .subscribe()
-
-        val snackbar = Snackbar.make(binding.root, com.goodwy.strings.R.string.support_project_to_unlock, Snackbar.LENGTH_SHORT)
-            .setAction(com.goodwy.commons.R.string.support) {
-                dialog?.dismiss()
-                activity.launchPurchase()
-            }
-
-        val bgDrawable = when {
-            activity.isDynamicTheme() -> ResourcesCompat.getDrawable(binding.root.resources, com.goodwy.commons.R.drawable.dialog_bg, null)
-            else -> ResourcesCompat.getDrawable(binding.root.resources, com.goodwy.commons.R.drawable.button_background_16dp, null)
-        }
-        snackbar.view.background = bgDrawable
-        val properBackgroundColor = activity.getProperBackgroundColor()
-        val backgroundColor =
-            if (properBackgroundColor == Color.BLACK || activity.isDynamicTheme()) properBackgroundColor
-            else activity.getSurfaceColor()
-        snackbar.setBackgroundTint(backgroundColor)
-        snackbar.setTextColor(activity.getProperTextColor())
-        snackbar.setActionTextColor(activity.getProperPrimaryColor())
-        snackbar.show()
     }
 
     private fun setupToggleBubbleStyle(style: Int = currentBubbleStyle) {
